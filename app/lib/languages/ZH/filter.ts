@@ -1,0 +1,17 @@
+export default {
+  hide_filter: '隐藏筛选器',
+  filter: '筛选器',
+  sort_by: '按排序',
+  products: '个产品',
+  quantity: '数量',
+  apply: '申请',
+  clear_all: '全部清除',
+  next_collections: '下一个系列',
+  previous_collections: '以前的收藏',
+  loading: '加载中',
+  featured: '精选',
+  price_low_high: '价格：低-高',
+  price_high_low: '价格：从高到低',
+  best_selling: '最畅销',
+  newest: '最新',
+};

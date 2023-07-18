@@ -1,0 +1,18 @@
+export default {
+  year: 'Year',
+  quarter: 'Quater',
+  reportDate: 'Report date',
+  financialReports: 'Financial reports',
+  explanation: 'Explanation',
+  investorNewsletter: 'Investor newsletter',
+  report: 'Report',
+  otherDisclosures: 'Other information disclosures',
+  consolidatedFinancialReport: 'Consolidated interim financial statements',
+  separateFinancialStatements: 'Separate financial statements',
+  newsletter: 'Newsletter',
+  annualReport: 'Annual report',
+  corporateGovernanceReport: 'Corporate governance reports',
+  sustainabilityReport: 'Sustainable development reports',
+  quarterReport: 'Quarter report',
+  reportAndEvents: 'Reports and Events',
+};

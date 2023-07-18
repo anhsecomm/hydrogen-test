@@ -1,0 +1,18 @@
+export default {
+  year: 'Năm',
+  quarter: 'Quý',
+  reportDate: 'Ngày lập báo cáo',
+  financialReports: 'Báo cáo tài chính',
+  explanation: 'Giải trình',
+  investorNewsletter: 'Bản tin nhà đầu tư',
+  report: 'Báo cáo',
+  otherDisclosures: 'Công bố thông tin khác',
+  consolidatedFinancialReport: 'Báo cáo tài chính hợp nhất',
+  separateFinancialStatements: 'Báo cáo tài chính riêng',
+  newsletter: 'Bản tin',
+  annualReport: 'Báo cáo thường niên',
+  corporateGovernanceReport: 'Báo cáo quản trị công ty',
+  sustainabilityReport: 'Báo cáo phát triển bền vững',
+  quarterReport: 'Báo cáo hàng quý',
+  reportAndEvents: 'Báo Cáo và Sự Kiện',
+};
