@@ -8,10 +8,12 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-
+import {builder, BuilderComponent} from '@builder.io/react';
+builder.init('5ff9122e249a486280d63ca7d5939ca0');
+import {useEffect, useState} from 'react';
 export const headers = routeHeaders;
 
-export async function loader({params, context}: LoaderArgs) {
+export async function loader({params, context, request}: LoaderArgs) {
   const {language, country} = context.storefront.i18n;
 
   if (
@@ -28,9 +30,29 @@ export async function loader({params, context}: LoaderArgs) {
   });
 
   const seo = seoPayload.home();
+  const page = await builder
+    .get('page-section', {
+      options: {
+        query: {
+          id: "948239e6de2c46a9bc356ef061981dd3",
+        },
+      },
+    })
+    .toPromise();
+
+  const isPreviewing = new URL(request.url).searchParams.has('builder.preview');
+  if (!page && !isPreviewing) {
+    throw new Response('Page Not Found', {
+      status: 404,
+
+      statusText:
+        "We couldn't find this page, please check your url path and if the page is published on Builder.io.",
+    });
+  }
 
   return defer({
     shop,
+    page,
     primaryHero: hero,
     // These different queries are separated to illustrate how 3rd party content
     // fetching can be optimized for both above and below the fold.
@@ -82,13 +104,21 @@ export default function Homepage() {
     tertiaryHero,
     featuredCollections,
     featuredProducts,
+    page,
   } = useLoaderData<typeof loader>();
-
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
     <>
+      {page && mounted && (
+        <BuilderComponent model={'page-section'} content={page} />
+      )}
+
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
